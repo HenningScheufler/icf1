@@ -6,6 +6,8 @@ Simulation of the bubble migration
 
 ```
 ./Allwmake
+pip install casefoam
+pip install pyfoam
 ```
 
 
