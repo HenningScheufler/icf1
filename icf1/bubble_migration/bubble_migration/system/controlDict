@@ -101,6 +101,23 @@ functions
             }
         }
     }
+
+    maxU
+    {
+        // Mandatory entries (unmodifiable)
+        type            volFieldValue;
+        libs            (fieldFunctionObjects);
+        writeControl    timeStep;
+        writeInterval   1;
+
+        // Mandatory entries (runtime modifiable)
+        fields          (U);
+        operation       max;
+        writeFields     false;
+
+        // Optional entries (runtime modifiable)
+        postOperation   none;
+    }
 }
 
 // ************************************************************************* //
