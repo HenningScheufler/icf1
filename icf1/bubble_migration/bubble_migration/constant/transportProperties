@@ -1,0 +1,46 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1812                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      transportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+phases (liquid air);
+
+liquid
+{
+    transportModel  Newtonian;//Newtonian fluid assumed
+    nu              [0 2 -1 0 0 0 0] 2e-05;//kinematic viscosity in m^2/s - silicon oil
+    rho             [1 -3 0 0 0 0 0] 950;//density kg/m^3 - silicone oil
+}
+
+air
+{
+    transportModel  Newtonian;
+    nu              [0 2 -1 0 0 0 0] 1.48e-05;//kinematic viscosity in m^2/s - air
+    rho             [1 -3 0 0 0 0 0] 1.2041;//density kg/m^3 - air WAS 1
+}
+
+sigma           [1 0 -2 0 0 0 0] 0.0206;//surface tension N/m - oil/air
+
+
+surfaceForces
+{
+  sigma 0.0206;
+  surfaceTensionForceModel RDF;	// options: gradAlpha RDF heightFunction fitParaboloid 
+  accelerationModel gravity;
+  deltaFunctionModel alphaCSF;
+}
+
+
+// ************************************************************************* //
